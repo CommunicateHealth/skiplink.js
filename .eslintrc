@@ -84,7 +84,10 @@
         "max-params": "error",
         "max-statements": [
           "error",
-          15
+          15,
+          {
+            "ignoreTopLevelFunctions": true
+          }
         ],
         "max-statements-per-line": "error",
         "multiline-comment-style": [
@@ -261,7 +264,7 @@
         ],
         "strict": [
             "error",
-            "never"
+            "safe"
         ],
         "switch-colon-spacing": "error",
         "symbol-description": "error",
