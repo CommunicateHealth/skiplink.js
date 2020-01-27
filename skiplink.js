@@ -3,7 +3,7 @@
 
   var historySupport = Boolean(history && history.pushState);
   var extraPadding = 100;
-  var validHash = /^#[a-z0-9%_-]+$/g;
+  var validHash = /^#[a-zA-Z0-9%_-]+$/g;
 
   window.addEventListener("DOMContentLoaded", skipNow);
   window.addEventListener("hashchange", skipNow);
