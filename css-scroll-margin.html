@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type="text/css">
       body {
+        padding-top: 75px;
         max-width: 30em;
         margin: 0 auto;
         font-size: 1.25rem;
@@ -18,13 +19,34 @@
       a[name]:target {
         background-color: yellow;
       }
+      header {
+        top: 0;
+        position: fixed;
+        background-color: #eee;
+        padding: 1em;
+        width: 30em;
+      }
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
+      /* considered: h1, h2, h3 */
+      [id],
+      a[name] {
+        scroll-margin-top: 150px;
+      }
     </style>
   </head>
 
   <body>
+    <header>Sticky header</header>
+
     <h1>
-      <a href="https://github.com/communicatehealth/skiplink.js">skiplink.js</a>
-      test page
+      <a href="https://github.com/communicatehealth/skiplink.js"
+        >skiplink<s>.js</s></a
+      >
+      CSS scroll-margin test
     </h1>
 
     <ul id="top">
@@ -49,6 +71,27 @@
       </li>
     </ul>
 
+    <p>Using <code>scroll-margin-top</code> to give skiplinks headroom.</p>
+
+    <p>For more information:</p>
+    <ul>
+      <li>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin"
+          >https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin</a
+        >
+      </li>
+      <li>
+        <a href="https://caniuse.com/#feat=mdn-css_properties_scroll-margin"
+          >https://caniuse.com/#feat=mdn-css_properties_scroll-margin</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://css-tricks.com/fixed-headers-and-jump-links-the-solution-is-scroll-margin-top/"
+          >https://css-tricks.com/fixed-headers-and-jump-links-the-solution-is-scroll-margin-top/</a
+        >
+      </li>
+    </ul>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam
       lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra
@@ -382,7 +425,5 @@
 
     <p id="bottom">this is #bottom</p>
     <p><a href="#top">#top</a></p>
-
-    <script src="skiplink.js"></script>
   </body>
 </html>
