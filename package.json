@@ -14,7 +14,7 @@
     "prettier": "prettier --write **/*.{js,json,md,html}"
   },
   "devDependencies": {
-    "eslint": "7.23.0",
+    "eslint": "7.24.0",
     "prettier": "2.2.1"
   }
 }
