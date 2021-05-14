@@ -2,6 +2,12 @@
 
 Skip links + a little headroom and focus.
 
+## Install
+
+```
+npm install @communicatehealth/skiplink.js
+```
+
 ## Demo page
 
 [https://communicatehealth.github.io/skiplink.js/](https://communicatehealth.github.io/skiplink.js/)
