@@ -28,7 +28,7 @@
     "work": "npm run lint && npm run serve"
   },
   "devDependencies": {
-    "eslint": "7.26.0",
+    "eslint": "7.27.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-es5": "1.5.0",
     "eslint-plugin-prettier": "3.4.0",
