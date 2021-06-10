@@ -2,7 +2,8 @@
   "use strict";
 
   var historySupport = Boolean(history && history.pushState),
-    extraPadding = 100;
+    extraPadding = 100,
+    validHash = /^#[a-z0-9%_-]+$/g;
 
   window.addEventListener("DOMContentLoaded", skipNow);
   window.addEventListener("hashchange", skipNow);
@@ -13,8 +14,7 @@
   }
 
   function skipLink(target, pushHistory) {
-    var targetElement,
-      validHash = /^#[a-zA-Z0-9%_-]+$/g;
+    var targetElement;
 
     if (!validHash.test(target)) {
       return false;
