@@ -25,7 +25,7 @@
     "uglify": "uglifyjs \"src/skiplink.js\" -m -o dist/skiplink.js",
     "serve": "npx serve",
     "build": "npm run lint && npm run uglify",
-    "work": "npm run lint && npm run serve"
+    "work": "npm run build && npm run serve"
   },
   "devDependencies": {
     "eslint": "7.28.0",
