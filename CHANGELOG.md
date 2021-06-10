@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2
+
+- Revert validHash scope change in 1.0.1
+- Improve validHash regex to include uppercase letters
+
 ## 1.0.1
 
 - Update Node dependencies
