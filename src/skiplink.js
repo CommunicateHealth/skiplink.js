@@ -1,8 +1,8 @@
 (function skiplink() {
   "use strict";
 
-  var historySupport = Boolean(history && history.pushState);
-  var extraPadding = 100;
+  var historySupport = Boolean(history && history.pushState),
+    extraPadding = 100;
 
   window.addEventListener("DOMContentLoaded", skipNow);
   window.addEventListener("hashchange", skipNow);
@@ -46,7 +46,7 @@
   }
 
   function fullFocus(element) {
-    if (!(/^(?:a|select|input|button|textarea)$/i).test(element.tagName)) {
+    if (!/^(?:a|select|input|button|textarea)$/i.test(element.tagName)) {
       element.setAttribute("tabindex", -1);
       element.addEventListener("blur", removeTabindex, true);
     }
@@ -62,4 +62,4 @@
 
     return window.pageYOffset + elementPosition.top - padding;
   }
-}());
+})();
