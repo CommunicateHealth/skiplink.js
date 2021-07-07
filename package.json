@@ -33,7 +33,7 @@
     "eslint-plugin-compat": "3.9.0",
     "eslint-plugin-es5": "1.5.0",
     "eslint-plugin-prettier": "3.4.0",
-    "prettier": "2.3.1",
+    "prettier": "2.3.2",
     "serve": "12.0.0",
     "uglify-js": "3.13.10"
   }
