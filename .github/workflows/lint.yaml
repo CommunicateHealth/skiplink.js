@@ -1,24 +1,31 @@
 name: Lint
 
-on: pull_request
+on:
+  workflow_dispatch: # enable run button on github.com
+  pull_request:
+
+env:
+  WORK_PATH: "./"
+  LOCK_PATH: "./package-lock.json"
+  NODE_VERSION: "14"
 
 jobs:
-  build:
+  lint:
     name: Lint JS
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
-      - uses: actions/checkout@v2.3.5
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2.4.1
+      - uses: actions/checkout@v2
+      - name: Set up Node.js ${{ env.NODE_VERSION }}.x
+        uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+          cache-dependency-path: ${{ env.LOCK_PATH }}
       - name: Install dependencies
         run: npm install
-      - run: npm run lint
+        working-directory: ${{ env.WORK_PATH }}
+      - name: Lint JS
+        run: npm run build
+        working-directory: ${{ env.WORK_PATH }}
         env:
           CI: true
