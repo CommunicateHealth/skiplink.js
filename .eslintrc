@@ -16,8 +16,6 @@
     "prettier"
   ],
 
-  "parser": "esprima",
-
   "parserOptions": {
     "ecmaVersion": 5,
     "sourceType": "script"
