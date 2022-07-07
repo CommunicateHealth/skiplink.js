@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+- Update Node dependencies
+
 ## 1.0.2
 
 - Revert validHash scope change in 1.0.1
