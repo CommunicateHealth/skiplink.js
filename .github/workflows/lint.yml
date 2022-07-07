@@ -4,28 +4,23 @@ on:
   workflow_dispatch: # enable run button on github.com
   pull_request:
 
-env:
-  WORK_PATH: "./"
-  LOCK_PATH: "./package-lock.json"
-  NODE_VERSION: "14"
-
 jobs:
   lint:
     name: Lint JS
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Node.js ${{ env.NODE_VERSION }}.x
+      - name: Set up Node.js LTS
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: "lts/*"
           cache: "npm"
-          cache-dependency-path: ${{ env.LOCK_PATH }}
+          cache-dependency-path: "./package-lock.json"
       - name: Install dependencies
         run: npm install
-        working-directory: ${{ env.WORK_PATH }}
+        working-directory: "./"
       - name: Lint JS
         run: npm run build
-        working-directory: ${{ env.WORK_PATH }}
+        working-directory: "./"
         env:
           CI: true
