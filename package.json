@@ -35,6 +35,6 @@
     "eslint-plugin-prettier": "4.2.1",
     "prettier": "2.7.1",
     "serve": "13.0.4",
-    "uglify-js": "3.16.2"
+    "uglify-js": "3.16.3"
   }
 }
