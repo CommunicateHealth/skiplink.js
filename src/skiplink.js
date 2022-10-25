@@ -28,7 +28,11 @@
     }
 
     if (historySupport && pushHistory) {
-      history.pushState({}, document.title, location.pathname + target);
+      history.pushState(
+        {},
+        document.title,
+        location.pathname + location.search + target
+      );
     }
 
     return Boolean(targetElement);
