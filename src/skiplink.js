@@ -46,15 +46,6 @@
   function yPadded(element) {
     var elementPosition = element.getBoundingClientRect(),
       padding = element.dataset.skiplinkPadding || extraPadding;
-    // eslint-disable-next-line no-console
-    console.log(
-      "Padding: " +
-        padding +
-        " window.scrollY: " +
-        window.scrollY +
-        " elementPosition.top: " +
-        elementPosition.top
-    );
     return window.scrollY + elementPosition.top - padding;
   }
 })();
