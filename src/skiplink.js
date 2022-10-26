@@ -23,7 +23,7 @@
         document.querySelector(targetElement.dataset.skiplinkScrollFrom) ||
         targetElement;
       setTimeout(function () {
-        window.scrollTo(window.pageXOffset, yPadded(scrollFromElement));
+        window.scrollTo(window.scrollX, yPadded(scrollFromElement));
         fullFocus(targetElement);
       }, 10);
     }
@@ -34,7 +34,9 @@
       element.setAttribute("tabindex", -1);
       element.addEventListener("blur", removeTabindex, true);
     }
-    element.focus();
+    element.focus({
+      preventScroll: true,
+    });
   }
 
   function removeTabindex(event) {
@@ -44,6 +46,15 @@
   function yPadded(element) {
     var elementPosition = element.getBoundingClientRect(),
       padding = element.dataset.skiplinkPadding || extraPadding;
-    return window.pageYOffset + elementPosition.top - padding;
+    // eslint-disable-next-line no-console
+    console.log(
+      "Padding: " +
+        padding +
+        " window.scrollY: " +
+        window.scrollY +
+        " elementPosition.top: " +
+        elementPosition.top
+    );
+    return window.scrollY + elementPosition.top - padding;
   }
 })();
