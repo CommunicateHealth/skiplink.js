@@ -1,51 +1,31 @@
 (function skiplink() {
   "use strict";
 
-  var historySupport = Boolean(history && history.pushState),
-    extraPadding = 100;
+  var extraPadding = 100;
 
-  window.addEventListener("DOMContentLoaded", skipNow);
-  window.addEventListener("hashchange", skipNow);
-  document.body.addEventListener("click", linkLimiter);
+  window.addEventListener("DOMContentLoaded", skipLink);
+  window.addEventListener("hashchange", skipLink);
 
-  function skipNow() {
-    skipLink(window.location.hash, false);
-  }
-
-  function skipLink(target, pushHistory) {
-    var targetElement,
+  function skipLink() {
+    var target = window.location.hash,
+      targetElement,
+      scrollFromElement,
       validHash = /^#[a-zA-Z0-9%_-]+$/g;
 
     if (!validHash.test(target)) {
-      return false;
+      return;
     }
 
-    targetElement = document.getElementById(target.slice(1));
+    targetElement = document.querySelector(target);
 
     if (targetElement) {
-      window.scrollTo(window.pageXOffset, yPadded(targetElement, extraPadding));
-      fullFocus(targetElement);
-    }
-
-    if (historySupport && pushHistory) {
-      history.pushState(
-        {},
-        document.title,
-        location.pathname + location.search + target
-      );
-    }
-
-    return Boolean(targetElement);
-  }
-
-  function linkLimiter(event) {
-    var source = event.target;
-
-    if (
-      source.nodeName === "A" &&
-      skipLink(source.getAttribute("href"), true)
-    ) {
-      event.preventDefault();
+      scrollFromElement =
+        document.querySelector(targetElement.dataset.skiplinkScrollFrom) ||
+        targetElement;
+      setTimeout(function () {
+        window.scrollTo(window.pageXOffset, yPadded(scrollFromElement));
+        fullFocus(targetElement);
+      }, 10);
     }
   }
 
@@ -61,9 +41,9 @@
     event.target.removeAttribute("tabindex");
   }
 
-  function yPadded(element, padding) {
-    var elementPosition = element.getBoundingClientRect();
-
+  function yPadded(element) {
+    var elementPosition = element.getBoundingClientRect(),
+      padding = element.dataset.skiplinkPadding || extraPadding;
     return window.pageYOffset + elementPosition.top - padding;
   }
 })();
