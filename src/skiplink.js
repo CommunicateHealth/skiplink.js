@@ -1,23 +1,21 @@
 (function skiplink() {
   "use strict";
 
-  var historySupport = Boolean(history && history.pushState),
-    extraPadding = 100;
+  var extraPadding = 100;
 
   window.addEventListener("DOMContentLoaded", skipNow);
   window.addEventListener("hashchange", skipNow);
-  document.body.addEventListener("click", linkLimiter);
 
   function skipNow() {
-    skipLink(window.location.hash, false);
+    skipLink(window.location.hash);
   }
 
-  function skipLink(target, pushHistory) {
+  function skipLink(target) {
     var targetElement,
       validHash = /^#[a-zA-Z0-9%_-]+$/g;
 
     if (!validHash.test(target)) {
-      return false;
+      return;
     }
 
     targetElement = document.getElementById(target.slice(1));
@@ -25,23 +23,6 @@
     if (targetElement) {
       window.scrollTo(window.pageXOffset, yPadded(targetElement, extraPadding));
       fullFocus(targetElement);
-    }
-
-    if (historySupport && pushHistory) {
-      history.pushState({}, document.title, location.pathname + target);
-    }
-
-    return Boolean(targetElement);
-  }
-
-  function linkLimiter(event) {
-    var source = event.target;
-
-    if (
-      source.nodeName === "A" &&
-      skipLink(source.getAttribute("href"), true)
-    ) {
-      event.preventDefault();
     }
   }
 
