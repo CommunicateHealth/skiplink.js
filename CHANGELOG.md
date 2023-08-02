@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+- Remove blur event listener.
+
 ## 1.2.0
 
 - Remove capturing clicks and rewriting history.
