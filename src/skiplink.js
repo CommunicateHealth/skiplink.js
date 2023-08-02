@@ -27,15 +27,19 @@
   }
 
   function fullFocus(element) {
-    if (!/^(?:a|select|input|button|textarea)$/i.test(element.tagName)) {
+    var fTabindex = false;
+    if (
+      !/^(?:a|select|input|button|textarea)$/i.test(element.tagName) &&
+      !element.hasAttribute("tabindex")
+    ) {
       element.setAttribute("tabindex", -1);
-      element.addEventListener("blur", removeTabindex, true);
+      fTabindex = true;
     }
     element.focus();
-  }
-
-  function removeTabindex(event) {
-    event.target.removeAttribute("tabindex");
+    if (fTabindex) {
+      element.removeAttribute("tabindex");
+      fTabindex = false;
+    }
   }
 
   function yPadded(element, padding) {
